@@ -21,7 +21,7 @@ function setup() {
 function draw() {
   background(0);
   text('Smart Arrows by Ron Aluf', 20, 20)
-  text('click to add an object', 470, 20)
+  text('click to add an obstacle', 470, 20)
   population.run();
   count++;
   

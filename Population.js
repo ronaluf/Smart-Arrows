@@ -63,7 +63,7 @@ class Population
           if(random(1) < 0.3)
           {
             child = p5.Vector.random2D();
-            child.setMag(random(10));
+            child.setMag(random(20));
 
           }
           newArrows[i] = new Arrow(child);

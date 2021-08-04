@@ -9,7 +9,7 @@ class Arrow
     else
     {
       this.dna = p5.Vector.random2D();
-      this.dna.setMag(random(10));
+      this.dna.setMag(random(20));
     } 
     this.pos = createVector(50,200);
     this.vel = createVector();
