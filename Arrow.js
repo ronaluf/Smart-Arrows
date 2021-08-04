@@ -80,7 +80,7 @@ class Arrow
     fill(255,100);
     if(this.completed)
     {
-      fill(0,255,0,120);
+      fill(0,255,0,150);//turn arrow green
     }
     rect(0,0,35,5);
     pop();

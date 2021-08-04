@@ -2,7 +2,7 @@
 let count = 0;
 let lifespan = 200;
 let objects = [];
-let clicked = false
+let targetDrag = false
 let newObjPos;
 let population;
 let traget;
@@ -52,7 +52,7 @@ function draw() {
 
 function drawTarget()
 {
-  fill(255);
+  fill(255,50,50,200);
   stroke(255);
   if(overTarget())
   {
@@ -60,6 +60,7 @@ function drawTarget()
   }
   circle(target.x, target.y, targetSize)
 }
+
 //adding a new obstacle
 function mouseClicked() {
   if(!overTarget())
@@ -70,7 +71,11 @@ function mouseClicked() {
 
 function mouseDragged() 
 {
-  if (overTarget())
+  if(overTarget)
+  {
+      targetDrag = true;
+  }
+  if (targetDrag)
   {
     target.x = mouseX ;
     target.y = mouseY ;
@@ -78,6 +83,12 @@ function mouseDragged()
 }
 
 
+function mouseReleased()
+{
+  targetDrag = false;
+}
+
+//checking if mouse is on the target
 function overTarget()
 {
     let  d = dist(mouseX, mouseY, target.x, target.y);
@@ -86,7 +97,7 @@ function overTarget()
       return true;
     }
 }
-
+//reset
 function reset()
 {
   objects = [];
@@ -95,7 +106,7 @@ function reset()
   objects.push(new Obj(createVector(0,300),createVector(10,900)));
   objects.push(new Obj(createVector(800,300),createVector(10,900)));
 }
-
+//reset if space is pressed
 function keyPressed() 
 {
   if(keyCode === 32)
