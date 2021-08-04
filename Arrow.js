@@ -55,7 +55,7 @@ class Arrow
       
       if(this.carshed)
       {
-         this.fitness *= 0.1;     
+         this.fitness = 0;     
       }
 
       if(this.completed)
@@ -70,8 +70,9 @@ class Arrow
     push();
     translate(this.pos.x, this.pos.y);
     rotate(this.vel.heading());
+    noStroke();
     fill(255,100);
-    rect(0,0,20,5);
+    rect(0,0,25,5);
     pop();
   }
 }
