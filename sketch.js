@@ -9,13 +9,13 @@ let traget;
 let targetSize = 30;
 //set up
 function setup() {
-  createCanvas(900, 600);
+  createCanvas(800, 500);
   population = new Population();
   target = createVector(550,200);
   //setting boundaries
-  objects.push(new Obj(createVector(300,0),createVector(1200,10)));
+  objects.push(new Obj(createVector(300,0),createVector(1200,5)));
   objects.push(new Obj(createVector(0,300),createVector(10,900)));
-  objects.push(new Obj(createVector(900,300),createVector(10,900)));
+  objects.push(new Obj(createVector(800,300),createVector(10,900)));
 }
 //update
 function draw() {
@@ -24,9 +24,11 @@ function draw() {
   noStroke();
   //text
   textSize(16)
-  text('Smart Arrows by Ron Aluf', 700, 20);
-  text('-click to add an obstacle', 20, 20);
-  text('-move the target with the mouse', 20, 40);
+  text('Smart Arrows by Ron Aluf', 600, 20);
+  text('- click to add an obstacle', 20, 20);
+  text('- to move the target drag the mouse slowly', 20, 40);
+  text('- press Space to restart', 20, 60);
+
 
   
   //the main loop
@@ -68,7 +70,7 @@ function mouseClicked() {
 
 function mouseDragged() 
 {
-  if (overTarget)
+  if (overTarget())
   {
     target.x = mouseX ;
     target.y = mouseY ;
@@ -85,4 +87,20 @@ function overTarget()
     }
 }
 
+function reset()
+{
+  objects = [];
+  population = new Population();
+  objects.push(new Obj(createVector(300,0),createVector(1200,5)));
+  objects.push(new Obj(createVector(0,300),createVector(10,900)));
+  objects.push(new Obj(createVector(800,300),createVector(10,900)));
+}
 
+function keyPressed() 
+{
+  if(keyCode === 32)
+    {
+        reset();
+
+    }
+}

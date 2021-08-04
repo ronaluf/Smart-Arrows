@@ -2,7 +2,7 @@ class Population
 {
   constructor()
   {
-    this.popSize = 30;
+    this.popSize = 25;
     this.arrows = [];
     this.matingpool = [];
     

@@ -15,6 +15,7 @@ class Arrow
     this.vel = createVector();
     this.acc = this.dna;
     this.gravity = createVector(0,0.1);
+    this.minDist = 1000;
     this.fitness = 0;
     this.completed = false;
     this.crashed = false;
@@ -23,6 +24,11 @@ class Arrow
   update()
   {
     let  d = dist(this.pos.x, this.pos.y, target.x, target.y);
+    if(d < this.minDist)
+    {
+        this.minDist = d;
+    }
+    
     if(d < targetSize / 2)
     {
       this.completed = true;
@@ -30,7 +36,8 @@ class Arrow
     
    for(let i = 0; i< objects.length; i++)
       {
-        if(this.pos.x > objects[i].pos.x - objects[i].size.x / 2 &&             this.pos.x < objects[i].pos.x + objects[i].size.x / 2)
+        if(this.pos.x > objects[i].pos.x - objects[i].size.x / 2 &&         
+           this.pos.x < objects[i].pos.x + objects[i].size.x / 2)
         {
           if(abs(this.pos.y - objects[i].pos.y) < objects[i].size.y / 2)
             {
@@ -50,12 +57,11 @@ class Arrow
   
   calcFitness()
   {
-      let d = dist(this.pos.x, this.pos.y, target.x ,target.y);
-      this.fitness = 1 / d;
+      this.fitness = 1 / this.minDist;
       
       if(this.carshed)
       {
-         this.fitness = 0;     
+         this.fitness /= 100;     
       }
 
       if(this.completed)
@@ -72,7 +78,11 @@ class Arrow
     rotate(this.vel.heading());
     noStroke();
     fill(255,100);
-    rect(0,0,25,5);
+    if(this.completed)
+    {
+      fill(0,255,0,120);
+    }
+    rect(0,0,35,5);
     pop();
   }
 }
