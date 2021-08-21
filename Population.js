@@ -60,11 +60,16 @@ class Population
           var parentB = random(this.matingpool).dna; 
           var child = parentA.copy().add(parentB);
           child.setMag((parentB.mag()  + parentA.mag()) / 2)
-          if(random(1) < 0.3)
+          if(random(1) < 0.2)
           {
             child = p5.Vector.random2D();
             child.setMag(random(20));
 
+          }
+          
+          if(random(1) < 0.1)
+          {
+             child.setMag(random(20));
           }
           newArrows[i] = new Arrow(child);
         }   

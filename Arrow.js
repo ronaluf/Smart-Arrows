@@ -11,7 +11,7 @@ class Arrow
       this.dna = p5.Vector.random2D();
       this.dna.setMag(random(20));
     } 
-    this.pos = createVector(50,200);
+    this.pos = start.copy();
     this.vel = createVector();
     this.acc = this.dna;
     this.gravity = createVector(0,0.1);
@@ -61,7 +61,7 @@ class Arrow
       
       if(this.carshed)
       {
-         this.fitness /= 100;     
+         this.fitness *= 0.0001;     
       }
 
       if(this.completed)
